@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.org/robforman/tcr.png?branch=master)](https://travis-ci.org/robforman/tcr)
 
 ## Warning
-This strips the socket_opts entirely that way having tcr active on a ruby 3.1.2 project does not break ldap bind anymore.
-
-
+This fork strips the socket_opts entirely (connection_timeout and resolv_timeout). That way net-ldap sockets work again on ruby 3.x.
+As this is only used in development mode, this is not really an issue for us. Maybe sometime in future tcr is updated officially for
+ruby 3 and then this fork can be removed again.
 
 TCR is a *very* lightweight version of [VCR](https://github.com/vcr/vcr) for TCP sockets.
 
