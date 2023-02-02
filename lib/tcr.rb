@@ -92,7 +92,10 @@ class Socket
       if TCR.configuration.hook_tcp_ports.include?(port)
         TCR::RecordableTCPSocket.new(host, port, TCR.cassette)
       else
-        real_tcp(host, port, *socket_opts)
+        # PATCHED for ruby 3.1.2, **socket_opts gives less errors, but still breaks on bind
+        # for now, just omit the extra 2 options entirely seems to fix most issues for now:
+        # real_tcp(host, port, *socket_opts)
+        real_tcp(host, port)
       end
     end
   end
